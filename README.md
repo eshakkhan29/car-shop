@@ -1,5 +1,5 @@
-# Getting Started with Create React App
+# Car Shop
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+see the project [Live project link](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
