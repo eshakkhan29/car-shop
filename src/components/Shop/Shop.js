@@ -9,11 +9,13 @@ const Shop = () => {
     const [car, setCar] = useState([]);
     const [cart, setCart] = useState([]);
     const [choose, setChoose] = useState([]);
+    // data fetch
     useEffect( () =>{
         fetch('car.json')
         .then(res => res.json())
         .then(data => setCar(data))
     },[])
+    // add to cart
     const addToCart = (data) => {
         const newCart = [...cart, data];
         if (cart.length === 4) {
@@ -23,19 +25,22 @@ const Shop = () => {
             setCart(newCart);
         }
     }
+    // select one from added cart
     const chooseOne = (cart) =>{
-        if (cart.length === 0 || cart.length !== 4) {
+        const cartLength = cart.length;
+        const newLength = cartLength - 1;
+        if (newLength === -1) {
             return alert('pleas add to cart')
         }
-        const random = Math.round(Math.random()*3);
+        let random = Math.round(Math.random() * newLength);
         const oneItem = cart[random];
         setChoose(oneItem);
     }
-    const emptyCart = [];
-    const emptyChoose = [];
+    // remove cart and choose item
+    const empty = [];
     const clearCart = () => {
-        setCart(emptyCart);
-        setChoose(emptyChoose);
+        setCart(empty);
+        setChoose(empty);
     }
     return (
         <div className='container'>
