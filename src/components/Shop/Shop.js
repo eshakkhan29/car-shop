@@ -24,15 +24,17 @@ const Shop = () => {
     }
     const chooseOne = (cart) =>{
         if (cart.length === 0) {
-            return alert('pless add to cart')
+            return alert('pleas add to cart')
         }
         const random = Math.round(Math.random()*3);
+        console.log(random);
         const oneItem = cart[random];
         setChoose(oneItem);
     }
     return (
-        <div className='row'>
-            <div className='product row row-cols-lg-3 g-4 p-lg-5 p-3 mt-0 col-lg-9 col-8'>
+        <div className='container'>
+            <div className='row'>
+            <div className='col-lg-9 order-lg-0 order-2 row row-cols-lg-3 row-cols-1 g-3'>
                 {
                     car.map(car => <Product 
                         key = {car.id} 
@@ -41,8 +43,8 @@ const Shop = () => {
                         ></Product>)
                 }
             </div>
-            <div className='cart col-lg-3 col-4 pt-5'>
-                <h2 className='text-center text-warning'>Selected Product</h2>
+            <div className='col-lg-3 order-lg-1 order-1'>
+                <h2 className='text-center text-success'>Selected Product</h2>
                 {
                     cart.map(cart => <Cart
                         key = {cart.id}
@@ -50,13 +52,14 @@ const Shop = () => {
                         choose = {choose}
                         ></Cart>)
                 }
-                <div>
-                    <button onClick={ () => chooseOne(cart)} className='btn btn-success mt-4 d-block'>Choose one for me</button>
-                    <button className='btn btn-success mt-4'>Choose Again</button>
+                <div className='text-center'>
+                    <button onClick={ () => chooseOne(cart)} className='btn btn-success mt-4 me-3'>Choose One</button>
+                    <button className='btn btn-warning mt-4'>Choose Again</button>
                     <Choose
                         choose = {choose}
                     ></Choose>
                 </div>
+            </div>
             </div>
         </div>
     );
