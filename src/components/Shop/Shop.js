@@ -3,6 +3,7 @@ import './Shop.css'
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import Choose from '../Choose/Choose';
+import Question from '../Question/Question';
 
 const Shop = () => {
     const [car, setCar] = useState([]);
@@ -65,6 +66,7 @@ const Shop = () => {
                 </div>
             </div>
             </div>
+            <Question></Question>
         </div>
     );
 };
