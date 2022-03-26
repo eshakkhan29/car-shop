@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import './Shop.css'
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
+import Choose from '../Choose/Choose';
 
 const Shop = () => {
     const [car, setCar] = useState([]);
     const [cart, setCart] = useState([]);
     const [choose, setChoose] = useState([]);
-    console.log(choose);
     useEffect( () =>{
         fetch('car.json')
         .then(res => res.json())
@@ -16,13 +16,16 @@ const Shop = () => {
     const addToCart = (data) => {
         const newCart = [...cart, data];
         if (cart.length === 4) {
-            alert('you can`t add more product')
+            return alert('you can`t add more product')
         }
         else{
             setCart(newCart);
         }
     }
     const chooseOne = (cart) =>{
+        if (cart.length === 0) {
+            return alert('pless add to cart')
+        }
         const random = Math.round(Math.random()*3);
         const oneItem = cart[random];
         setChoose(oneItem);
@@ -50,6 +53,9 @@ const Shop = () => {
                 <div>
                     <button onClick={ () => chooseOne(cart)} className='btn btn-success mt-4 d-block'>Choose one for me</button>
                     <button className='btn btn-success mt-4'>Choose Again</button>
+                    <Choose
+                        choose = {choose}
+                    ></Choose>
                 </div>
             </div>
         </div>
