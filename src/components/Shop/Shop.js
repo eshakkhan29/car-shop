@@ -16,14 +16,14 @@ const Shop = () => {
     const addToCart = (data) => {
         const newCart = [...cart, data];
         if (cart.length === 4) {
-            return alert('you can not add more product')
+            return alert("you can't add more product")
         }
         else{
             setCart(newCart);
         }
     }
     const chooseOne = (cart) =>{
-        if (cart.length === 0) {
+        if (cart.length === 0 || cart.length !== 4) {
             return alert('pleas add to cart')
         }
         const random = Math.round(Math.random()*3);
@@ -31,10 +31,11 @@ const Shop = () => {
         setChoose(oneItem);
     }
     const emptyCart = [];
+    const emptyChoose = [];
     const clearCart = () => {
         setCart(emptyCart);
+        setChoose(emptyChoose);
     }
-
     return (
         <div className='container'>
             <div className='row'>
@@ -53,7 +54,6 @@ const Shop = () => {
                     cart.map(cart => <Cart
                         key = {cart.id}
                         cart = {cart}
-                        choose = {choose}
                         ></Cart>)
                 }
                 <div className='text-center'>
