@@ -16,7 +16,7 @@ const Shop = () => {
     const addToCart = (data) => {
         const newCart = [...cart, data];
         if (cart.length === 4) {
-            return alert('you can`t add more product')
+            return alert('you can not add more product')
         }
         else{
             setCart(newCart);
@@ -27,14 +27,18 @@ const Shop = () => {
             return alert('pleas add to cart')
         }
         const random = Math.round(Math.random()*3);
-        console.log(random);
         const oneItem = cart[random];
         setChoose(oneItem);
     }
+    const emptyCart = [];
+    const clearCart = () => {
+        setCart(emptyCart);
+    }
+
     return (
         <div className='container'>
             <div className='row'>
-            <div className='col-lg-9 order-lg-0 order-2 row row-cols-lg-3 row-cols-1 g-3'>
+            <div className='col-lg-9 order-lg-0 order-2 row row-cols-lg-3 row-cols-1 g-3 pe-0'>
                 {
                     car.map(car => <Product 
                         key = {car.id} 
@@ -54,7 +58,7 @@ const Shop = () => {
                 }
                 <div className='text-center'>
                     <button onClick={ () => chooseOne(cart)} className='btn btn-success mt-4 me-3'>Choose One</button>
-                    <button className='btn btn-warning mt-4'>Choose Again</button>
+                    <button onClick={clearCart} className='btn btn-warning mt-4'>Choose Again</button>
                     <Choose
                         choose = {choose}
                     ></Choose>
