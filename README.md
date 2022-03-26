@@ -1,5 +1,5 @@
 # Car Shop
 
-see the project [Live project link](https://github.com/facebook/create-react-app).
+see the live project [Live project link](https://car-shop-assignment.netlify.app/).
 
-## Available Scripts
+## https://car-shop-assignment.netlify.app/
